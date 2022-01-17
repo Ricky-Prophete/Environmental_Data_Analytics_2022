@@ -1,0 +1,41 @@
+---
+title: "Assignment 1: Introduction"
+author: Ricky Prophete
+output: pdf_document
+geometry: margin=2.54cm
+---
+
+## OVERVIEW
+
+This exercise accompanies the introductory material in Environmental Data Analytics. 
+
+## Directions
+1. Change "Student Name" on line 3 (above) with your name.
+3. Work through the steps, **creating code and output** that fulfill each instruction.
+4. Be sure to **answer the questions** in this assignment document.
+6. When you have completed the assignment, **Knit** the text and code into a single PDF file.
+8. After Knitting, submit the completed exercise (PDF file) to the dropbox in Sakai. Add your last name into the file name (e.g., "Lima_A01_Introduction.Rmd") prior to submission.
+
+The completed exercise is due on <>.
+
+## 1) Discussion Questions
+
+1. What are your previous experiences with data analytics, R, and Git? Include both formal and informal training.
+
+> Answer: I've taken statistics and econometrics at the undergrad level, and recently completed an econometrics course as part of the Sanford MPP core. I've used STATA as part of this training. 
+
+2. Are there any components of the course about which you feel confident?
+
+> Answer: I feel fairly confident with respect to the statistical aspect of the course.
+
+3. Are there any components of the course about which you feel apprehensive?
+
+> Answer: Though I have some experience coding in STATA, R will require a bit of a learning curve. 
+
+## 2) GitHub
+
+Provide a link below to your forked course repository in GitHub. Make sure you have pulled all recent changes from the course repository  and that you have updated your course README file. 
+
+> Answer: https://github.com/Ricky-Prophete/Environmental_Data_Analytics_2022.git
+
+
