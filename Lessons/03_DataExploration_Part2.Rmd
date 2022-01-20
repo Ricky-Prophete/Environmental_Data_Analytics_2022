@@ -70,6 +70,7 @@ Visualize distributions of values for continuous numerical variables. What is ha
 #
 ggplot(USGS.flow.data) +
   geom_histogram(aes(x = discharge.mean))
+#can add aesthetics
 
 #
 ggplot(USGS.flow.data) +
@@ -77,7 +78,7 @@ ggplot(USGS.flow.data) +
 
 #
 ggplot(USGS.flow.data) +
-  geom_histogram(aes(x = discharge.mean), bins = 20)
+  geom_histogram(aes(x = discharge.mean), bins = 20) #use between 5 and 20 bins -- best practice
 
 #
 ggplot(USGS.flow.data, aes(x = discharge.mean)) +
