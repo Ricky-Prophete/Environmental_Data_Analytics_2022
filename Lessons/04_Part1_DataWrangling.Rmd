@@ -27,7 +27,7 @@ getwd()
 library(tidyverse)
 #install.packages(lubridate)
 library(lubridate)
-NTL.phys.data <- read.csv("./Data/Raw/NTL-LTER_Lake_ChemistryPhysics_Raw.csv", stringsAsFactors = TRUE)
+NTL.phys.data <- read.csv("../Data/Raw/NTL-LTER_Lake_ChemistryPhysics_Raw.csv", stringsAsFactors = TRUE)
 
 colnames(NTL.phys.data)
 head(NTL.phys.data)
@@ -190,7 +190,7 @@ Notice that we did not place the dataset name inside the wrangling function but 
 ### Saving processed datasets
 
 ```{r}
-write.csv(NTL.phys.data.PeterPaul1, row.names = FALSE, file = "./Data/Processed/NTL-LTER_Lake_ChemistryPhysics_PeterPaul_Processed.csv")
+write.csv(NTL.phys.data.PeterPaul1, row.names = FALSE, file = "../Data/Processed/NTL-LTER_Lake_ChemistryPhysics_PeterPaul_Processed.csv")
 ```
 
 ## Closing Discussion

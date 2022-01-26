@@ -159,7 +159,7 @@ Litter <- LitterFiles %>%
 
 We also have information about individual traps, including the location and type of landcover. Let's join these two datasets. Note that "siteID", "plotID" and "trapID" exist in both datasets, and we can join them by these conditions. Notice the dimensions of the final dataset.
 ```{r}
-Trap <- read.csv("./Data/Raw/NEON_NIWO_Litter_trapdata_raw.csv")
+Trap <- read.csv("../Data/Raw/NEON_NIWO_Litter_trapdata_raw.csv")
 LitterTrap <- left_join(Litter, Trap, by = c("siteID", "plotID", "trapID"))
 
 dim(Litter)
@@ -170,7 +170,7 @@ LitterTrap <- LitterTrap %>%
   select(plotID:trapID, collectDate, functionalGroup:qaDryMass, subplotID:geodeticDatum)
 
 write.csv(LitterTrap, row.names = FALSE, 
-          file ="./Data/Processed/NEON_NIWO_Litter_mass_trap_Processed.csv")
+          file ="../Data/Processed/NEON_NIWO_Litter_mass_trap_Processed.csv")
 ```
 
 ## Split-Apply-Combine
@@ -191,7 +191,7 @@ NTL.PeterPaul.summaries <-
             sdTP = sd(tp_ug))
 
 write.csv(NTL.PeterPaul.summaries, row.names = FALSE, 
-          file ="./Data/Processed/NTL-LTER_Lake_Summaries_PeterPaul_Processed.csv")
+          file ="../Data/Processed/NTL-LTER_Lake_Summaries_PeterPaul_Processed.csv")
 
 ```
 
