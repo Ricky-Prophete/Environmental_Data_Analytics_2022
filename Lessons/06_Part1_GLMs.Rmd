@@ -72,7 +72,7 @@ Important components of the linear regression are the correlation and the R-squa
 For the NTL-LTER dataset, can we predict irradiance (light level) from depth?
 
 ```{r}
-irradiance.regression <- lm(PeterPaul.chem.nutrients$irradianceWater ~ PeterPaul.chem.nutrients$depth)
+irradiance.regression <- lm(PeterPaul.chem.nutrients$irradianceWater ~ PeterPaul.chem.nutrients$depth) #lm stands for "linear model"
 
 # another way to format the lm() function
 irradiance.regression <- lm(data = PeterPaul.chem.nutrients, irradianceWater ~ depth)

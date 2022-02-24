@@ -24,7 +24,7 @@ PeterPaul.chem.nutrients <- read.csv("./Data/Processed/NTL-LTER_Lake_Chemistry_N
 # Set date to date format
 PeterPaul.chem.nutrients$sampledate <- as.Date(PeterPaul.chem.nutrients$sampledate, format = "%Y-%m-%d")
 
-EPAair <- read.csv("./Data/Processed/EPAair_O3_PM25_NC1819_Processed.csv", stringsAsFactors = TRUE)
+EPAair <- read.csv("./Data/Processed/EPAair_O3_PM25_NC2021_Processed.csv", stringsAsFactors = TRUE)
 # Set date to date format
 EPAair$Date <- as.Date(EPAair$Date, format = "%Y-%m-%d")
 
@@ -151,6 +151,18 @@ Create three plots, each with appropriately formatted axes and legends. Choose a
 
 ```{r}
 #Exercise 2:
+Plot1 <- ggplot(EPAair)+
+  geom_density(aes(x = Ozone, fill=as.factor(Year)), alpha = 0.5))+
+print(Plot1)
+
+Plot1 <- ggplot(EPAair,aes(x=Ozone, fill=as.factor(Year)), alpha = 0.5)+
+  geom_density()
+print(Plot1)
+
+Plot2 <- ggplot(EPAair, aes(x = as.factor(Year), y = Ozone))+
+  geom_boxplot()+
+  stat_summary(geom = 'text', fun = max, vjust = -1, size = 4)
+print(Plot2)
 
 
 ```
@@ -165,10 +177,19 @@ For the NTL-LTER dataset, can we predict PM2.5 from Ozone?
 
 #Exercise 3: Run a linear regression PM2.5 by Ozone. Find the p-value and R-squared value. 
 
+PM2.5_Ozone_Regression <- lm(data = EPAair, PM2.5 ~ Ozone)
+summary(PM2.5_Ozone_Regression)
+#p value = < 2.2e-16 / R squared = 0.1314
 
 
 #Exercise 4: Build a scatterplot. Add a line and standard error for the linear regression. 
 
+PM2.5byOzone <- ggplot(EPAair, aes(x = Ozone, y = PM2.5))+
+  geom_point()+
+  geom_smooth(method = "lm", se = TRUE)
+print(PM2.5byOzone)
+
+testcor <- cor(x = Ozone, y = PM2.5)
 
 
 ```
@@ -182,12 +203,16 @@ What other variables can we add to improve model?
 
 #Exercise 5: Build correlation plots and identify more possible explanatory variables to add to the regression.
 
+library(corrplot)
 
+the_cor <- cor(EPAair %>% select(SITE_LATITUDE:PM2.5) %>% drop_na())
+
+corrplot(the_cor, method = "ellipse")
 
 
 #Exercise 6: Choose a model by AIC in a Stepwise Algorithm. Do the results from AIC match the variables you selected on Exercise 5?
 
-
+the_lm6 <- lm(data= EPAair, PM2.5 ~ Ozone + Year + meanLat + mean())
 
 
 #Exercise 7: Run another regression using the variables selected on Exercise 6. Compare r-squared value with the one from Exercise 5. 
