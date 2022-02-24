@@ -91,10 +91,11 @@ Ozone.plot <- ggplot(EPAair, aes(x = Ozone)) +
   scale_x_continuous(expand = c(0, 0)) + scale_y_continuous(expand = c(0, 0))
 print(Ozone.plot)
 ```
+#state hypothesis/// examine data/// T-test
 
 Write a sentence or two about the results of this test. Include both the results of the test and an interpretation that puts the findings in context of the research question.
 
-> 
+> Ozone levels are below 50 ppm using a one sided t test @ a 95% confidence level
 
 ### Two-sample t-test
 
@@ -124,7 +125,6 @@ O3.twosample2 <- lm(EPAair$Ozone ~ EPAair$Year)
 summary(O3.twosample2)
 
 plot(O3.twosample2)
-
 
 ```
 
