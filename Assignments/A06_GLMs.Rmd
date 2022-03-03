@@ -160,7 +160,8 @@ summary(Peter.Paul.Anova2)
 Plot2 <- ggplot(Peter.Paul.Wrangled, aes(x = depth, y = temperature_C, color = lakename))+
   geom_point(alpha = 0.5)+
   #geom_smooth(method = "lm", se = FALSE)+
-  geom_line(stat = "smooth", method = "lm", se = FALSE, alpha = 0.7)+ #using geom_line to make lines more legible as alpha doesn't work with geom_smooth
+  geom_line(stat = "smooth", method = "lm", se = FALSE, alpha = 0.7)+ 
+  #using geom_line to make lines more legible as alpha doesn't work with geom_smooth
   ylim(0,35)+
   labs(x = "Depth", y = "Temperature")
 print(Plot2)
