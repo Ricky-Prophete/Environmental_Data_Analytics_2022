@@ -36,6 +36,7 @@ library(sf)
 library(leaflet)
 library(mapview)
 library(RColorBrewer)
+library(nationalparkcolors)
 ```
 
 # 2. ACCESSING SPATIAL DATA
@@ -81,10 +82,17 @@ mapView(counties_sf, zcol = "AWATER")
 ```{r read HUCs shapefile}
 #Read the shapefile into an sf dataframe named "huc8_sf"
 
-
+huc8_sf <- st_read("./Data/Spatial/NCHUC8.shp")
+spec(huc8_sf)
 
 #View the data as a map, colored by the acreage in each
 
+ggplot(data = huc8_sf) + 
+  geom_sf(aes(fill=ACRES))+
+  #scale_fill_continuous(type = "viridis")+
+  scale_fill_manual(type = "Arches")
+
+mapview(huc8_sf)
 
 ```
 
@@ -115,10 +123,19 @@ The URL '<https://raw.githubusercontent.com/ENV859/EnviroAtlasData/main/Wind_Ene
 ```{r}
 #Compute HUC8 wind energy
 
+wind_raw <- read.csv("https://raw.githubusercontent.com/ENV859/EnviroAtlasData/main/Wind_Energy.csv", colClasses = c('HUC_12' = 'factor')) %>%
+  mutate(HUC_8 = substr(HUC_12,1,8)) %>% 
+  group_by(HUC_8) %>%
+  summarise(windpower = sum(AvgWindEnergy))
 
-
+view(wind_raw)
 
 #Join to HUC_8 features
+
+huc8_wind <- merge(x = huc8_sf,
+                   y = wind_raw,
+                   by.x = "HUC_8",
+                   by.y = "HUC_8")
 
 
 
@@ -169,7 +186,10 @@ Select the counties in the "Triangle" (Chatham, Durham, Orange, and Wake). Then 
 ```{r EXERCISE: Clipping}
 #Select the Triangle counties from the sf_counties dataframe
 
+triangle_co <- counties_sf_utm %>%
+  filter(NAME %in% c('Chatham', 'Durham', 'Orange', 'Wake'))
 
+mapview(triangle_co)
 
   
 #Grab the intersecting HUC_8s
