@@ -235,4 +235,13 @@ mapview(NE_Counties.sf.utm, col.regions = "grey", alpha = 0.5, map.types = c("Es
   mapview(Lancaster_sf, col.regions = "blue", alpha = 0.5)+
   mapview(Gage_Lancaster_sf, col.regions = "red", alpha = 0.5)
 
+#ggplot alternate
+Plot2 <- ggplot()+
+  geom_sf(data = NE_Counties.sf.utm, fill = "grey", alpha = 0.6)+
+  geom_sf(data = Lancaster_sf, fill = "blue", alpha = 0.7)+
+  geom_sf(data = Gage_Lancaster_sf, color = "red", alpha = 0.6)
+
+print(Plot2)
+
+
 ```
