@@ -26,20 +26,20 @@ ui <- fluidPage(theme = shinytheme("yeti"),
       checkboxGroupInput(inputId = "fill",
                          label = "Depth ID",
                          choices = unique(nutrient_data$depth_id),
-                         selected = c(1, 7)),
+                         selected = c(3, 5)),
       
       # Select lake
       checkboxGroupInput(inputId = "shape",
                          label = "Lake",
                          choices = c("Peter Lake", "Paul Lake"),
-                         selected = "Peter Lake"),
+                         selected = "Paul Lake"),
 
       # Select date range to be plotted
       sliderInput(inputId = "x",
                   label = "Date",
                   min = as.Date("1991-05-01"),
                   max = as.Date("2016-12-31"),
-                  value = c(as.Date("1995-01-01"), as.Date("1999-12-31")))),
+                  value = c(as.Date("1992-01-01"), as.Date("1998-12-31")))),
 
     # Output
     mainPanel(
@@ -67,8 +67,8 @@ server <- function(input, output) {
           theme_classic(base_size = 14) +
           scale_shape_manual(values = c(21, 24)) +
           labs(x = "Date", y = expression(Concentration ~ (mu*g / L)), shape = "Lake", fill = "Depth ID") +
-          scale_fill_distiller(palette = "YlOrBr", guide = "colorbar", direction = 1)
-          #scale_fill_viridis_c(option = "viridis", begin = 0, end = 0.8, direction = -1)
+          #scale_fill_distiller(palette = "YlOrBr", guide = "colorbar", direction = 1)
+          scale_fill_viridis_c(option = "viridis", begin = 0, end = 0.8, direction = 1)
       })
        
     # Create a table that generates data for each point selected on the graph  
